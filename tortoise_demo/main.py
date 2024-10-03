@@ -1,8 +1,8 @@
 import asyncio
 
-from tortoise import Tortoise, run_async
+from tortoise import Tortoise
 
-from tortoise_demo.models import *
+from tortoise_demo.models import Tournament, Event, Team
 
 
 async def init():
