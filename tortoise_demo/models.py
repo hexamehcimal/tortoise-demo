@@ -3,13 +3,9 @@ from tortoise import fields
 
 
 class Tournament(Model):
-    # Defining `id` field is optional, it will be defined automatically
-    # if you haven't done it yourself
     id = fields.IntField(primary_key=True)
     name = fields.CharField(max_length=255)
 
-    # Defining ``__str__`` is also optional, but gives you pretty
-    # represent of model in debugger and interpreter
     def __str__(self):
         return self.name
 
@@ -21,8 +17,6 @@ class Tournament(Model):
 class Event(Model):
     id = fields.IntField(primary_key=True)
     name = fields.CharField(max_length=255)
-    # References to other models are defined in format
-    # "{app_name}.{model_name}" - where {app_name} is defined in tortoise config
     tournament = fields.ForeignKeyField('models.Tournament',
                                         related_name='events')
     participants = fields.ManyToManyField('models.Team',
